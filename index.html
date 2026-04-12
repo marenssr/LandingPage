@@ -51,11 +51,7 @@
     z-index: 50;
   }
 
-  .nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; }
 
   .nav-mark {
     width: 26px; height: 26px;
@@ -77,10 +73,18 @@
     letter-spacing: -0.01em;
   }
 
-  /* HERO */
+  /* HERO — two columns */
   .hero {
-    padding: 80px 48px 64px;
-    max-width: 900px;
+    padding: 72px 48px 72px;
+    display: flex;
+    align-items: flex-start;
+    gap: 56px;
+  }
+
+  .hero-left {
+    flex: 0 0 auto;
+    width: 380px;
+    padding-top: 8px;
   }
 
   .hero-eyebrow {
@@ -93,7 +97,7 @@
   }
 
   .hero-title {
-    font-size: 52px;
+    font-size: 46px;
     font-weight: 600;
     color: var(--text-bright);
     line-height: 1.08;
@@ -101,54 +105,34 @@
     margin-bottom: 20px;
   }
 
-  .hero-title span {
-    color: var(--accent);
-  }
+  .hero-title span { color: var(--accent); }
 
   .hero-sub {
-    font-size: 17px;
+    font-size: 15px;
     color: var(--text-mid);
-    line-height: 1.65;
+    line-height: 1.7;
     font-weight: 300;
-    max-width: 580px;
   }
 
-  /* DIVIDER */
-  .divider {
-    height: 1px;
-    background: var(--border-light);
-    margin: 0 48px;
-  }
-
-  /* TOOLS GRID */
-  .tools-section {
-    padding: 56px 48px 80px;
-  }
-
-  .section-label {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    color: var(--text-dim);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-  }
-
-  .tools-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+  /* CARDS column */
+  .hero-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
   }
 
   .tool-card {
     background: var(--surface);
     border: 1px solid var(--border-light);
-    border-radius: var(--radius);
-    padding: 32px;
+    border-radius: var(--radius-sm);
+    padding: 20px 24px;
     text-decoration: none;
     color: inherit;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    gap: 16px;
     box-shadow: var(--shadow-sm);
     transition: box-shadow 0.22s ease, transform 0.22s ease, border-color 0.22s ease;
     position: relative;
@@ -158,8 +142,8 @@
   .tool-card::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
+    top: 0; left: 0; bottom: 0;
+    width: 3px;
     background: var(--card-color, var(--accent));
     opacity: 0;
     transition: opacity 0.22s ease;
@@ -168,73 +152,79 @@
   .tool-card:hover {
     box-shadow: var(--shadow-lg);
     transform: translateY(-2px);
-    border-color: rgba(0,0,0,0.08);
+    border-color: rgba(0,0,0,0.07);
   }
 
-  .tool-card:hover::before {
-    opacity: 1;
-  }
+  .tool-card:hover::before { opacity: 1; }
 
   .tool-icon {
-    width: 40px; height: 40px;
-    border-radius: 10px;
+    width: 36px; height: 36px;
+    border-radius: 9px;
     display: flex; align-items: center; justify-content: center;
-    margin-bottom: 20px;
     background: var(--icon-bg, rgba(0,113,227,0.08));
     flex-shrink: 0;
   }
 
+  .tool-body { flex: 1; min-width: 0; }
+
+  .tool-top {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+
   .tool-number {
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: 9px;
     color: var(--text-dim);
     letter-spacing: 0.08em;
-    margin-bottom: 8px;
+    flex-shrink: 0;
   }
 
   .tool-name {
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 600;
     color: var(--text-bright);
-    letter-spacing: -0.02em;
-    margin-bottom: 10px;
+    letter-spacing: -0.01em;
     line-height: 1.2;
   }
 
   .tool-desc {
-    font-size: 13px;
+    font-size: 12px;
     color: var(--text-mid);
-    line-height: 1.65;
+    line-height: 1.6;
     font-weight: 300;
-    flex: 1;
-    margin-bottom: 24px;
   }
 
-  .tool-meta {
+  .tool-right {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 10px;
+    flex-shrink: 0;
   }
 
   .tool-tags {
     display: flex;
-    gap: 6px;
+    gap: 5px;
     flex-wrap: wrap;
+    justify-content: flex-end;
   }
 
   .tag {
     font-family: var(--font-mono);
-    font-size: 10px;
-    padding: 3px 8px;
+    font-size: 9px;
+    padding: 2px 7px;
     border-radius: 100px;
     background: var(--bg);
     border: 1px solid var(--border-light);
     color: var(--text-dim);
     letter-spacing: 0.04em;
+    white-space: nowrap;
   }
 
   .tool-arrow {
-    font-size: 16px;
+    font-size: 15px;
     color: var(--text-dim);
     transition: transform 0.2s ease, color 0.2s ease;
     flex-shrink: 0;
@@ -252,6 +242,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-top: auto;
   }
 
   .footer-left {
@@ -267,23 +258,23 @@
     color: var(--text-dim);
   }
 
-  /* Staggered fade-in on load */
+  /* Animations */
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(12px); }
+    from { opacity: 0; transform: translateY(10px); }
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  .hero        { animation: fadeUp 0.5s ease both; }
-  .tool-card:nth-child(1) { animation: fadeUp 0.5s 0.1s ease both; }
-  .tool-card:nth-child(2) { animation: fadeUp 0.5s 0.18s ease both; }
-  .tool-card:nth-child(3) { animation: fadeUp 0.5s 0.26s ease both; }
+  .hero-left  { animation: fadeUp 0.5s 0.05s ease both; }
+  .tool-card:nth-child(1) { animation: fadeUp 0.45s 0.12s ease both; }
+  .tool-card:nth-child(2) { animation: fadeUp 0.45s 0.20s ease both; }
+  .tool-card:nth-child(3) { animation: fadeUp 0.45s 0.28s ease both; }
 
   @media (max-width: 860px) {
-    .tools-grid { grid-template-columns: 1fr; }
+    .hero { flex-direction: column; gap: 32px; padding: 48px 24px; }
+    .hero-left { width: 100%; }
     .hero-title { font-size: 36px; }
-    .hero, .tools-section { padding-left: 24px; padding-right: 24px; }
     nav, footer { padding-left: 24px; padding-right: 24px; }
-    .divider { margin: 0 24px; }
+    .tool-tags { display: none; }
   }
 </style>
 </head>
@@ -297,71 +288,84 @@
 </nav>
 
 <section class="hero">
-  <h1 class="hero-title">Interactive<br>Reference <span>Tools</span></h1>
-  <p class="hero-sub">A collection of interactive guides for controls and electrical engineering. Covering project workflows, equipment standards, and machine programming methodologies.</p>
-</section>
 
-<div class="divider"></div>
+  <!-- LEFT: title + description -->
+  <div class="hero-left">
+    <div class="hero-eyebrow">marenssr · GitHub Portfolio</div>
+    <h1 class="hero-title">Interactive<br>Reference <span>Tools</span></h1>
+    <p class="hero-sub">A collection of interactive guides for controls and electrical engineering. Covering project workflows, equipment standards, and machine programming methodologies.</p>
+  </div>
 
-<section class="tools-section">
-  <div class="section-label">Tools</div>
-  <div class="tools-grid">
+  <!-- RIGHT: tool cards -->
+  <div class="hero-right">
 
-    <a class="tool-card" href="https://marenssr.github.io/EquipmentWorkflow/" target="_blank" style="--card-color: #0071e3; --icon-bg: rgba(0,113,227,0.08)">
+    <a class="tool-card" href="https://marenssr.github.io/EquipmentWorkflow/" target="_blank"
+       style="--card-color: #0071e3; --icon-bg: rgba(0,113,227,0.08)">
       <div class="tool-icon">
-        <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
           <rect x="2" y="2" width="7" height="7" rx="1.5" fill="#0071e3"/>
           <rect x="11" y="2" width="7" height="7" rx="1.5" fill="#0071e3" opacity="0.4"/>
           <rect x="2" y="11" width="7" height="7" rx="1.5" fill="#0071e3" opacity="0.4"/>
           <rect x="11" y="11" width="7" height="7" rx="1.5" fill="#0071e3" opacity="0.2"/>
         </svg>
       </div>
-      <div class="tool-number">01</div>
-      <div class="tool-name">Equipment Workflow</div>
-      <div class="tool-desc">An interactive reference for full equipment development lifecycle. From initial project concept through commissioning, with ownership, dependencies, and duration estimates mapped per task.</div>
-      <div class="tool-meta">
+      <div class="tool-body">
+        <div class="tool-top">
+          <span class="tool-number">01</span>
+          <span class="tool-name">Equipment Workflow</span>
+        </div>
+        <div class="tool-desc">Full equipment development lifecycle with ownership, dependencies, and duration estimates mapped per task.</div>
+      </div>
+      <div class="tool-right">
         <div class="tool-tags">
           <span class="tag">Workflow</span>
-          <span class="tag">Dependencies</span>
           <span class="tag">39 tasks</span>
         </div>
         <span class="tool-arrow">→</span>
       </div>
     </a>
 
-    <a class="tool-card" href="https://marenssr.github.io/ControlsProjectWorkflow/" target="_blank" style="--card-color: #6e6e73; --icon-bg: rgba(110,110,115,0.08)">
+    <a class="tool-card" href="https://marenssr.github.io/ControlsProjectWorkflow/" target="_blank"
+       style="--card-color: #6e6e73; --icon-bg: rgba(110,110,115,0.08)">
       <div class="tool-icon">
-        <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
           <path d="M10 2L18 17H2L10 2Z" fill="#6e6e73" opacity="0.85"/>
         </svg>
       </div>
-      <div class="tool-number">02</div>
-      <div class="tool-name">Controls Project Workflow</div>
-      <div class="tool-desc">A dependency mapped playbook for executing controls projects across design, build, and commissioning phases.</div>
-      <div class="tool-meta">
+      <div class="tool-body">
+        <div class="tool-top">
+          <span class="tool-number">02</span>
+          <span class="tool-name">Controls Project Workflow</span>
+        </div>
+        <div class="tool-desc">Dependency-mapped playbook for executing controls projects across design, build, and commissioning phases.</div>
+      </div>
+      <div class="tool-right">
         <div class="tool-tags">
           <span class="tag">Controls</span>
-          <span class="tag">Electrical</span>
           <span class="tag">3 phases</span>
         </div>
         <span class="tool-arrow">→</span>
       </div>
     </a>
 
-    <a class="tool-card" href="https://marenssr.github.io/MachineProgrammingMethedology/" target="_blank" style="--card-color: #9a9a9f; --icon-bg: rgba(154,154,159,0.1)">
+    <a class="tool-card" href="https://marenssr.github.io/MachineProgrammingMethedology/" target="_blank"
+       style="--card-color: #9a9a9f; --icon-bg: rgba(154,154,159,0.1)">
       <div class="tool-icon">
-        <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
           <circle cx="10" cy="10" r="7" fill="#9a9a9f" opacity="0.85"/>
           <path d="M7 10L9.5 12.5L13.5 7.5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
-      <div class="tool-number">03</div>
-      <div class="tool-name">Machine Programming Methodology</div>
-      <div class="tool-desc">A structured reference for machine programming standards that covers code architecture, naming conventions, state machine design, and best practices for PLC/HMI development.</div>
-      <div class="tool-meta">
+      <div class="tool-body">
+        <div class="tool-top">
+          <span class="tool-number">03</span>
+          <span class="tool-name">Machine Programming Methodology</span>
+        </div>
+        <div class="tool-desc">Structured reference for machine programming standards — code architecture, naming conventions, and PLC/HMI best practices.</div>
+      </div>
+      <div class="tool-right">
         <div class="tool-tags">
           <span class="tag">PLC</span>
-          <span class="tag">HMI</span>
           <span class="tag">Standards</span>
         </div>
         <span class="tool-arrow">→</span>
